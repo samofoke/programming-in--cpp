@@ -1,2 +1,2 @@
-# programming-in-c-
+# programming-in-C++
 the basics of c++ programming
