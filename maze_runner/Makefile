@@ -1,24 +1,26 @@
 NAME = maze.a
 
-CFLAGS = -Wall -Wextra -Werror
+SRC =
 
-CPP = g++
+OBJP = $(SRC:.cpp=.o)
 
-SRC = 
+	CFLAGS = -Wall -Wextra -Werror
+	CC = g++ -g
 
-OBJECTS = $(SRC:.cpp=.o)
+all: $(NAME) maze
 
-all: $(NAME)
+maze: $(OBJP)
+		$(CC) $(CFLAGS) $(OBJP) -o maze
 
-$(NAME):
-		$(CPP) $(CFLAGS) -c $(SRC)
-		ar rc $(NAME) $(OBJECTS)
-		ranlib $(NAME)
+$(LIBFT):
+		make -C all
+%.o: %.cpp
+		$(CC) $(CFLAGS) -cpp $< -o $@ -I.
 
 clean:
-		rm -f $(OBJECTS)
-
+		make -C clean
+			rm -f *.o
 fclean: clean
-		rm -f $(NAME)
-
-re:		fclean all
+		make -C fclean
+			rm -f maze
+re: fclean all
