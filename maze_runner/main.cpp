@@ -17,4 +17,24 @@ int main()
     }
     Initialize();
     srand( (unsigned) time(NULL));
+    MazeGenerator(rand() % grtex + 1, rand() % grtey + 1);
+
+    if (algo_mode == 0)
+    {
+        DFS(otx, oty);
+    }
+    else
+    {
+        BFS(otx, oty);
+    }
+    if (!Path_exit)
+    {
+        printf("You are trapped...");
+        PrintMase(0, 0);
+        printf("Press Enter to continue.");
+        getchar();
+        getchar();
+    }
+    return(0);
+    
 }
