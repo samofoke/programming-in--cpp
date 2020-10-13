@@ -10,6 +10,25 @@ void    MazeGenerator(int gx, int gy)
 
     for (int x = 0, sp = rand() % 4; x < 4; x++, sp = (sp + ph) % 4)
     {
-        if (dbly + dy[sp] - 1)
+        if (dbly + dy[sp] - 1 != mzgy && maze[dblx + 2 * dx[sp]][dbly + 2 * dy[sp]])
+        {
+            maze[dblx + dx[sp]][dbly + dy[sp]] = 0;
+            if (gen_prcs)
+            {
+                system("clear");
+                PrintMase(dblx + dx[sp], dbly + dy[sp]);
+                if (!aut_ps)
+                {
+                    printf("Press Enter to continue.");
+                    getchar();
+                }
+                else
+                {
+                    system(instructions);
+                }
+                
+            }
+            MazeGenerator(gx + dx[sp], gy + dy[sp]);
+        }
     }
 }
