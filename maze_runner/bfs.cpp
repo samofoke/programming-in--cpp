@@ -61,6 +61,35 @@ void    BFS(int x, int y)
                 }
             }
         }
-        if () 
+        if (!Quptd)
+        {
+            int dltx = x;
+            int dlty = y;
+            do
+            {
+                maze[dltx][dlty] = 16;
+                int tmpx = Qpre[dltx][dlty][0];
+                dlty = Qpre[dltx][dlty][1];
+                dltx = tmpx;
+                QnexNum[dltx][dlty]--;
+
+                if (srch_prcs)
+                {
+                    system("clear");
+                    PrintMase(xspx, xspy);
+                    if (!aut_ps)
+                    {
+                        printf("Press Enter to continue.");
+                        getchar();
+                    }
+                    else
+                    {
+                        system(instructions);
+                    }
+                    
+                }
+            } while (dltx && dlty && !QnexNum[dltx][dlty]);
+        }
+        Q.pop();
     }
 }
